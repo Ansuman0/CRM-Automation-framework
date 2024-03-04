@@ -31,6 +31,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Convert actor name to lowercase
+        id: lowercase_actor
+        run: echo "::set-output name=lowercase_actor::$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')"
+
       - name: Build and Push Docker image
         uses: docker/build-push-action@v4
         with:
@@ -38,5 +42,5 @@ jobs:
           dockerfile: ./dockerfile  # Adjust the path to your Dockerfile if necessary
           push: true
           tags: |
-            ansumansing/crm-automation-framework_latestpush:{{ github.actor | lower }}-latest
-            ansumansing/crm-automation-framework_githubtag:{{ github.actor | lower }}-${{ github.run_number }}
+            ansumansing/crm-automation-framework_latestpush:${{ steps.lowercase_actor.outputs.lowercase_actor }}-latest
+            ansumansing/crm-automation-framework_githubtag:${{ steps.lowercase_actor.outputs.lowercase_actor }}-${{ github.run_number }}
