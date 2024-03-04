@@ -11,5 +11,5 @@ RUN mvn package
 FROM openjdk:17
 EXPOSE 8080
 WORKDIR /automation-framework
-COPY --from=maven target/CRMVTiger.ApplicationFramwork-0.0.1-SNAPSHOT.jar /app/CRMVTiger.ApplicationFramwork-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar", "/app/CRMVTiger.ApplicationFramwork-0.0.1-SNAPSHOT.jar"]
+COPY --from=maven target/crmVTiger.ApplicationFramwork-0.0.1-SNAPSHOT.jar /app/crmVTiger.ApplicationFramwork-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "/app/crmVTiger.ApplicationFramwork-0.0.1-SNAPSHOT.jar"]
