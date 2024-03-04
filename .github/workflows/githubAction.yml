@@ -39,4 +39,4 @@ jobs:
           push: true
           tags: |
             ansumansing/crm-automation-framework_latestpush:${{ github.actor }}-latest
-            ansumansing/crm-automation-framework:${{ github.actor }}-${{ # }}${{ github.run_number }}
+            ansumansing/crm-automation-framework:${{ github.actor }}-${{ github.run_number }}
