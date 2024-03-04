@@ -38,5 +38,5 @@ jobs:
           dockerfile: ./dockerfile  # Adjust the path to your Dockerfile if necessary
           push: true
           tags: |
-            ansumansing/CRM-Automation-framework_latestpush:${{ github.actor }}-latest
-            ansumansing/CRM-Automation-framework_githubtag:${{ github.actor }}-${{ github.run_number }}
+            ansumansing/crm-Automation-framework_latestpush:${{ github.actor }}-latest
+            ansumansing/crm-Automation-framework_githubtag:${{ github.actor }}-${{ github.run_number }}
