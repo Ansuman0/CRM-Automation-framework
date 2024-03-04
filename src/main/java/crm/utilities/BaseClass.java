@@ -17,11 +17,8 @@ import crm.factories.DriverFactory;
 import crm.objectRepository.HomePage;
 import crm.objectRepository.LoginPage;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 public class BaseClass {
@@ -71,7 +68,7 @@ public class BaseClass {
 
     @AfterClass(groups = { "SMOKE", "SANITY" })
     public void acConfig() {
-        driver.quit();
+        //driver.quit();
         Driver.quitDriver();
         logger.info("====== Browser Closed ======");
     }
