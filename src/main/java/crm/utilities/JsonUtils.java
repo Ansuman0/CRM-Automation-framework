@@ -32,8 +32,6 @@ public class JsonUtils {
 		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) {
 			throw new Exception("Property name " + key + " is not found.Please check config.json");
 		}
-
 		return CONFIGMAP.get(key.name().toLowerCase());
-
 	}
 }

@@ -49,9 +49,9 @@ public class LoginPage { // rule 1: create class
 	 * 
 	 * @Story("Successful login of application opens Dashboard Page")
 	 */
-	public void loginToApp(String USERNAME, String PASSWORD) {
-		userNameEdt.sendKeys(USERNAME);
-		passwordEdt.sendKeys(PASSWORD);
+	public void loginToApp(String username, String password) {
+		userNameEdt.sendKeys(username);
+		passwordEdt.sendKeys(password);
 		loginBtn.click();
 
 		String userName = loginUserName.getText();
