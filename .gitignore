@@ -19,6 +19,13 @@ Logs
 *.zip
 *.tar.gz
 *.rar
+*.7z
+*.dmg
+*.gz
+*.iso
+*.tar
+*.sar
+*.class
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -33,6 +40,9 @@ target/
 test-output/
 *.iml
 
+# Maven
+target/
+
 # nexus
 deploycmd.txt
 
@@ -41,6 +51,10 @@ deploycmd.txt
 .classpath/
 .project/
 .settings
+*.iml
+*.iws
+*.ipr
+.idea
 
 # 
 pom.nexus.xml
@@ -54,4 +68,6 @@ ExtentReports
 
 #ScreenShots
 ScreenShots
+
+
 
