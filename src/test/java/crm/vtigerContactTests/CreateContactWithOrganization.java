@@ -1,5 +1,8 @@
 package crm.vtigerContactTests;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -15,16 +18,21 @@ import crm.utilities.BaseClass;
 
 @Listeners(ListenerClass.class)
 public class CreateContactWithOrganization extends BaseClass {
-	
+
 	@FrameworkAnnotation(author = { "Ansuman" }, category = { CategoryType.SMOKE, CategoryType.REGRESSION })
-	@Test(groups = {"SMOKE","REGRESSION"})
+	@Test(groups = { "SMOKE", "REGRESSION" })
 	public void createContactWithOrganizationTest() {
 
-		String orgname = RandomUtilsImpliments.getCompanyName();
 		String industryType = "Engineering";// can use data-provide for multipule data & run.
 
-		String firstName = RandomUtilsImpliments.getFirstName();
+		String firstname = RandomUtilsImpliments.getFirstName();
 		String lastname = RandomUtilsImpliments.getLastName();
+		String orgname = RandomUtilsImpliments.getCompanyName();
+
+		Map<String, String> contactDetails = new HashMap<>();
+		contactDetails.put("firstname", firstname);
+		contactDetails.put("lastname", lastname);
+		contactDetails.put("orgname", orgname);
 
 		/*
 		 * First we are creating organization based on that we will add contact.
@@ -44,7 +52,8 @@ public class CreateContactWithOrganization extends BaseClass {
 		ContactsPage cp = new ContactsPage(driver);
 		cp.clickOnCreateContactLookupImage();
 
-		cp.createContactWithOrg(driver, firstName, lastname, orgname);
+		// cp.createContactWithOrg(driver, firstName, lastname, orgname);
+		cp.createContactWithOrg(driver, contactDetails);
 
 		System.out.println("Name : " + lastname);
 
