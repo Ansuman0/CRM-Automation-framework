@@ -1,12 +1,18 @@
 package crm.objectRepository;
 
+import java.util.Map;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import crm.randomdataUtils.RandomUtilsImpliments;
+import crm.webdriverActions.WebDriverUtility;
+
 public class OpportunityPage {
-	
+
 	// Opportunity Information:
 	@FindBy(xpath = "//img[@title='Create Opportunity...']")
 	private WebElement createOpportunityLookUpImg;
@@ -66,15 +72,108 @@ public class OpportunityPage {
 	public OpportunityPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void clickOnOpportunityLookUpImage() {
 		createOpportunityLookUpImg.click();
 	}
-	
+
 	public String getOpportunitiesPageHeader() {
 		return opportunitFormHeader.getText();
 	}
-	
-	
+
+	public String getCreatedOpportunityHeader() {
+		return createdOpportunityHeaderTitel.getText();
+	}
+
+	// WebDriverUtility
+
+	public void createOpportunityFullDetails(WebDriver driver, String opportunityName, String commonValue,
+			String CampaignsName, String description, String closeDate, String relatedToDrpvalue) throws Exception {
+
+		opportunityNameEdt.sendKeys(opportunityName);
+
+		WebDriverUtility.handleDropDown(relatedToDrp, relatedToDrpvalue);// Organizations
+		if (relatedToDrpvalue.contentEquals("Accounts")) {
+			relatedToDrpValueLookUpImg.click();
+			WebDriverUtility.switchToWindow(driver, "Accounts");
+			orgSearchEdt.sendKeys(commonValue);// common elements so used same button
+			orgSearchBtn.click();// common elements so used same button
+			driver.findElement(By.xpath("//a[.='" + commonValue + "']")).click();
+			WebDriverUtility.switchToWindow(driver, "Potentials");// opportunity page.
+		} else {
+			relatedToDrpValueLookUpImg.click();
+			WebDriverUtility.switchToWindow(driver, "Contacts");
+			orgSearchEdt.sendKeys(commonValue);// common elements so used same button
+			orgSearchBtn.click();// common elements so used same button
+			// driver.findElement(By.xpath("//a[.='" + commonValue + "']")).click();
+			driver.findElement(By.xpath("//a[contains(., '" + commonValue + "')]")).click();
+			WebDriverUtility.switchToWindow(driver, "Potentials");// opportunity page.
+		}
+
+		WebDriverUtility.handleDropDown(opportunityTypeDrp, "Existing Business");
+
+		/*
+		 * I have Taken staic Value ,If require dynami value can use data Provider.
+		 * 
+		 * Based on the related Dropdown value we are selecting this . This will switch
+		 * windows and move Campaign window and select Created Org. Base on the Created
+		 * Campaign we passing this value.
+		 */
+		WebDriverUtility.handleDropDown(leadSourceDrp, "Cold Call");
+		campaignSourceLookUpImg.click();
+		WebDriverUtility.switchToWindow(driver, "Campaigns");// campaigns
+		orgSearchEdt.sendKeys(CampaignsName);// common elements so used same button
+		orgSearchBtn.click(); // common elements so used same button
+		driver.findElement(By.xpath("//a[.='" + CampaignsName + "']")).click();
+		WebDriverUtility.switchToWindow(driver, "Potentials");// opportunity page.
+		expectedCloseDate.clear();
+		expectedCloseDate.sendKeys(closeDate);
+
+		/*
+		 * I have Taken static Value ,If require dynamic value can use data Provider.
+		 */
+
+		WebDriverUtility.handleDropDown(salesStageDrp, "Prospecting"); // If Required enable.
+
+		saveBtn.click();
+	}
+
+	public void createOpportunityWithContactOrOrg(WebDriver driver, Map<String, String> opportunityDetails)
+			throws Exception {
+
+		String opportunityname = opportunityDetails.get("opportunityname");
+		String relatedDrp = opportunityDetails.get("relatedDrp");
+		String commonValue = opportunityDetails.get("commonValue");
+		String closeDate = opportunityDetails.get("closeDate");
+		String description = opportunityDetails.get("description");
+
+		opportunityNameEdt.sendKeys(opportunityname);
+		WebDriverUtility.handleDropDown(relatedToDrp, relatedDrp);
+
+		if (relatedDrp.contentEquals("Accounts")) {
+			relatedToDrpValueLookUpImg.click();
+			WebDriverUtility.switchToWindow(driver, "Accounts");
+			orgSearchEdt.sendKeys(commonValue);// common elements so used same button
+			orgSearchBtn.click();// common elements so used same button
+			Thread.sleep(4000);
+
+			driver.findElement(By.xpath("//a[.='" + commonValue + "']")).click();
+			WebDriverUtility.switchToWindow(driver, "Potentials");// opportunity page.
+		} else {
+			relatedToDrpValueLookUpImg.click();
+			WebDriverUtility.switchToWindow(driver, "Contacts");
+			orgSearchEdt.sendKeys(commonValue);// common elements so used same button
+			orgSearchBtn.click();// common elements so used same button
+			driver.findElement(By.xpath("//a[contains(., '" + commonValue + "')]")).click();
+			WebDriverUtility.switchToWindow(driver, "Potentials");// opportunity page.
+		}
+
+		amount.sendKeys(RandomUtilsImpliments.getPrice());
+		expectedCloseDate.clear();
+		expectedCloseDate.sendKeys(closeDate);
+		descriptionEdt.sendKeys(description);
+
+		saveBtn.click();
+	}
 
 }

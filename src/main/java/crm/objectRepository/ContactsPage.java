@@ -77,7 +77,7 @@ public class ContactsPage {
 		lastNameEdt.sendKeys(lastname);
 		saveBtn.click();
 	}
-
+/**
 	public void createContactWithOrg(WebDriver driver, String firtname, String lastname, String orgname) {
 		WebDriverUtility.handleDropDown(firstNameDrp, "Mr.");
 		firstNameEdt.sendKeys(firtname);
@@ -103,6 +103,7 @@ public class ContactsPage {
 			Thread.currentThread().interrupt();
 		}
 	}
+	**/
 	/**
 	 * This is optimized code with Map value to avoid Sonar issues.
 	 * @param driver

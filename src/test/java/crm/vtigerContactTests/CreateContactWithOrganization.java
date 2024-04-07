@@ -23,7 +23,7 @@ public class CreateContactWithOrganization extends BaseClass {
 	@Test(groups = { "SMOKE", "REGRESSION" })
 	public void createContactWithOrganizationTest() {
 
-		String industryType = "Engineering";// can use data-provide for multipule data & run.
+		String industryType = "Engineering";// can use data-provide for multiple data & run.
 
 		String firstname = RandomUtilsImpliments.getFirstName();
 		String lastname = RandomUtilsImpliments.getLastName();
@@ -46,7 +46,7 @@ public class CreateContactWithOrganization extends BaseClass {
 
 		op.createOrganizationWithIndustry(driver, orgname, industryType);
 
-		// Contact creatation based on the organization
+		// Contact creation based on the organisation
 		hp.clickOnContactsLink();
 
 		ContactsPage cp = new ContactsPage(driver);
