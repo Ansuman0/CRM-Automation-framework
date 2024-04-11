@@ -96,6 +96,7 @@ public class HomePage  {
 	}
 
 	public void logOutOfApp(WebDriver driver) {
+		
 		WebDriverUtility.mouseHoverAction(driver, administratorImg);
 
 		Boolean actualElement = true;
