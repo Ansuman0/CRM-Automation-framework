@@ -1,7 +1,7 @@
-# Compiled class file
+# Compiled class files
 *.class
 
-# Log file
+# Log files
 Logs
 *.log
 
@@ -11,7 +11,7 @@ Logs
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package Files
 *.jar
 *.war
 *.nar
@@ -35,15 +35,15 @@ Logs
 *.phar binary
 *.class binary
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# eclipse
+# Eclipse
 .classpath
 .project
 .settings/
 
-# java folders
+# Java folders
 target/
 test-output/
 *.iml
@@ -51,10 +51,10 @@ test-output/
 # Maven
 */target/**
 
-# nexus
+# Nexus
 deploycmd.txt
 
-# Intellij
+# IntelliJ
 .idea/
 .classpath/
 .project/
@@ -71,11 +71,11 @@ pom.nexus.xml
 # Allure
 allure-results
 
-#ExtentReports
+# ExtentReports
 ExtentReports
 
-#ScreenShots
+# ScreenShots
 ScreenShots
 
-
-
+# Ignore specific compiled class files and related files in target/test-classes
+target/test-classes/
