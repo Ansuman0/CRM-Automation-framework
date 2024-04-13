@@ -78,4 +78,5 @@ ExtentReports
 ScreenShots
 
 # Ignore specific compiled class files and related files in target/test-classes
+target/**
 target/test-classes/
