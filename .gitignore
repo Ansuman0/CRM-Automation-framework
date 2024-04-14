@@ -50,6 +50,10 @@ test-output/
 
 # Maven
 */target/**
+/target/
+*/target/**
+**/META-INF/
+!.mvn/wrapper/maven-wrapper.jar
 
 # Nexus
 deploycmd.txt
@@ -78,5 +82,5 @@ ExtentReports
 ScreenShots
 
 # Ignore specific compiled class files and related files in target/test-classes
-target/**
+target/*
 target/test-classes/
