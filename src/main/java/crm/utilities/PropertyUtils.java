@@ -25,7 +25,7 @@ public class PropertyUtils {
 	/**
 	 * Private constructor to avoid external instantiation
 	 */
-	private PropertyUtils() { 
+	private PropertyUtils() {
 	}
 
 	static {
@@ -47,4 +47,5 @@ public class PropertyUtils {
 		}
 		return CONFIGMAP.get(key.name().toLowerCase());
 	}
+
 }
